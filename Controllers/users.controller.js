@@ -45,7 +45,7 @@ exports.login = (req, res) => {
                         if (!valid) {
                             res.status(406).send({ 'message': 'Invalid password' })
                         } else {
-                            token = jwt.sign({ _id: userData._id, first_name: userData.first_name, email: userData.email }, process.env.SECRET_TOKEN);
+                            token = jwt.sign({ _id: userData._id, first_name: userData.first_name, email: userData.email }, process.env.SECRET_TOKEN || 'react');
                             res.send({ token })
                         }
                     })

@@ -1,10 +1,15 @@
 const FeedbackModel = require("../Models/Feedback.model")
 
 exports.getAll = (req , res)=>{
-    FeedbackModel.find()
-    .then((result)=>{
-        res.send(result)
-    }) 
+   FeedbackModel.find() 
+   .then((data)=>{
+
+
+    res.send(data)
+
+   })
+
+
 }
 
 exports.getAll2 = (req , res)=>{
@@ -25,8 +30,9 @@ exports.create = async(req , res)=>{
     var new_feed = new FeedbackModel(req.body)
     // new_feed.text = req.body.text
     // new_feed.rating = req.body.rating
-    await new_feed.save()
-    res.send(new_feed)
+   new_feed.save()
+   .then((result)=>res.send(result))
+   .catch(err=>res.status(407).send(err))
 }
 
 exports.update = (req , res)=>{

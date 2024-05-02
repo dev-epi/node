@@ -8,7 +8,7 @@ require('dotenv').config() // !env file
 const app = express()
 app.use(express.json())  // JSON data
 app.use(cors()) // Allow access
-app.use('/storage' , express.static(__dirname+'/storage'))
+app.use('/uploads' , express.static(__dirname+'/uploads'))
 
 mongoose.connect(process.env.DB)
 .then(()=>{
@@ -19,7 +19,7 @@ mongoose.connect(process.env.DB)
 
 
 
-//routes
+//routes 
 require('./routes/feedbacks.routes')(app)
 require('./routes/users.routes')(app)
 
